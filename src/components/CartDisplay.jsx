@@ -13,12 +13,13 @@ export default function CartDisplay() {
   const items = useSelector(selectItems);
   const dispatch = useDispatch();
 
-  const itemList = items.map((item) => (
-    <div key={item.name}>
-      {item.name}
+  const itemList = items.map((item, index) => (
+    <div key={item[0]}>
+      {item[0]}
       {cart.includes(item) ? (
-        <button onClick={() => dispatch(removeItem(item))}>Remove</button>
+        <button onClick={() => console.log(item)}>Remove</button>
       ) : (
+        // <button onClick={() => dispatch(removeItem(item))}>Remove</button>
         <button onClick={() => dispatch(additem(item))}>Add</button>
       )}
     </div>
@@ -26,8 +27,7 @@ export default function CartDisplay() {
 
   const cartList = cart.map(
     (item) => {
-      console.log(item);
-      return <ItemCart item={item} key={item.name} />;
+      return <ItemCart item={item} key={item[1]} />;
     }
     // <div key={item.name}>
     //   <div>{item.name}</div>
