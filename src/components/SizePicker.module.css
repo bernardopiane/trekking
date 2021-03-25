@@ -1,0 +1,13 @@
+.dropdown {
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+.dropdown:hover {
+  box-shadow: none;
+}
+
+.arrow {
+}
