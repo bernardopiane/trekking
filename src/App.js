@@ -10,6 +10,10 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import TwitterBar from "./components/TwitterBar";
 
+//TODO serialize items
+//TODO continuar cart
+//TODO selecionar cor/tamanhos
+
 function App() {
   return (
     <BrowserRouter>
