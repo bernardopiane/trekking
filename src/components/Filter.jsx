@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  childrenToggle,
+  menToggle,
+  toggleFilter,
+  womenToggle,
+} from "../features/cart/cartSlice";
 
 const Wrapper = styled.div`
   padding: 4em 0 4em 0;
@@ -37,20 +44,17 @@ const Button = styled.button`
 `;
 
 export default function Filter() {
-  const [ChkMen, setChkMen] = useState(false);
-  const toggleMen = () => setChkMen(!ChkMen);
-
-  const [ChkWomen, setChkWomen] = useState(false);
-  const toggleWomen = () => setChkWomen(!ChkWomen);
-
-  const [ChkChildren, setChkChildren] = useState(false);
-  const toggleChildren = () => setChkChildren(!ChkChildren);
-
   const toggleAll = () => {
-    setChkMen(true);
-    setChkWomen(true);
-    setChkChildren(true);
+    dispatch(toggleFilter("men"));
+    dispatch(toggleFilter("women"));
+    dispatch(toggleFilter("children"));
   };
+
+  const dispatch = useDispatch();
+
+  const ChkMen = useSelector(menToggle);
+  const ChkWomen = useSelector(womenToggle);
+  const ChkChildren = useSelector(childrenToggle);
 
   return (
     <Wrapper>
@@ -59,7 +63,13 @@ export default function Filter() {
           <ToggleSection>
             <div>
               <label>
-                <input type="checkbox" checked={ChkMen} onChange={toggleMen} />
+                <input
+                  type="checkbox"
+                  checked={ChkMen}
+                  onChange={() => {
+                    dispatch(toggleFilter("men"));
+                  }}
+                />
                 <SpanLabel>Men</SpanLabel>
               </label>
             </div>
@@ -68,7 +78,9 @@ export default function Filter() {
                 <input
                   type="checkbox"
                   checked={ChkWomen}
-                  onChange={toggleWomen}
+                  onChange={() => {
+                    dispatch(toggleFilter("women"));
+                  }}
                 />
                 <SpanLabel>Women</SpanLabel>
               </label>
@@ -78,7 +90,9 @@ export default function Filter() {
                 <input
                   type="checkbox"
                   checked={ChkChildren}
-                  onChange={toggleChildren}
+                  onChange={() => {
+                    dispatch(toggleFilter("children"));
+                  }}
                 />
                 <SpanLabel>children</SpanLabel>
               </label>

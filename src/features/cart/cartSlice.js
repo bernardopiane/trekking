@@ -721,6 +721,10 @@ export const cartSlice = createSlice({
     value: 0,
     items: ItemsArray,
     cart: [],
+    //Fazer em array de bools
+    menFilter: true,
+    womenFilter: true,
+    childrenFilter: true,
   },
   reducers: {
     additem: (state, action) => {
@@ -729,10 +733,22 @@ export const cartSlice = createSlice({
     removeItem: (state, action) => {
       state.cart = state.cart.filter((item) => item !== action.payload);
     },
+
+    toggleFilter: (state, action) => {
+      if (action.payload === "men") {
+        state.menFilter = !state.menFilter;
+      }
+      if (action.payload === "women") {
+        state.womenFilter = !state.womenFilter;
+      }
+      if (action.payload === "children") {
+        state.childrenFilter = !state.childrenFilter;
+      }
+    },
   },
 });
 
-export const { additem, removeItem } = cartSlice.actions;
+export const { additem, removeItem, toggleFilter } = cartSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -740,5 +756,11 @@ export const { additem, removeItem } = cartSlice.actions;
 export const selectCart = (state) => state.cart.cart;
 
 export const selectItems = (state) => state.cart.items;
+
+export const menToggle = (state) => state.cart.menFilter;
+
+export const womenToggle = (state) => state.cart.womenFilter;
+
+export const childrenToggle = (state) => state.cart.childrenFilter;
 
 export default cartSlice.reducer;
