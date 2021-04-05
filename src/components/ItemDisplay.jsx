@@ -1,9 +1,31 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { additem } from "../features/cart/cartSlice";
 import ColorPicker from "./ColorPicker";
 import SizePicker from "./SizePicker";
 
+const AddToCartArea = styled.div`
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  display: none;
+  transition: all 225ms ease-in-out;
+`;
+
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  padding: 1em 0 1em 0;
+  object-fit: cover;
+  transition: filter 225ms ease-in-out;
+`;
+
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 30em;
@@ -16,6 +38,19 @@ const Wrapper = styled.div`
   :hover {
     border: #aa9b77 3px solid;
   }
+  :hover > ${Image} {
+    filter: grayscale(50%);
+  }
+  :hover > ${AddToCartArea} {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  //Consertar não poder clicar em baixo
   :focus {
     border: #aa9b77 3px solid;
   }
@@ -30,13 +65,6 @@ const Row = styled.div`
   align-items: center;
 `;
 
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  padding: 1em 0 1em 0;
-  object-fit: cover;
-`;
-
 const Value = styled.div`
   font-size: 22px;
   color: #424242;
@@ -47,9 +75,18 @@ const Type = styled.div`
   color: #aa9b77;
 `;
 
+const AddToCartBtn = styled.div`
+  pointer-events: initial;
+`;
+
 export default function ItemDisplay({ item }) {
+  const dispatch = useDispatch(additem);
+
   return (
     <Wrapper>
+      <AddToCartArea>
+        <AddToCartBtn onClick={() => dispatch(additem(item))}>+</AddToCartBtn>
+      </AddToCartArea>
       <Row>
         <SizePicker />
         <ColorPicker colors={["red", "green", "blue"]} />

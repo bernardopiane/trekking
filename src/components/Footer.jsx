@@ -53,7 +53,7 @@ export default function Footer() {
               minus ipsam iste quae!
             </div>
           </MyCol>
-          <MyCol xs={12} lg={4} inverted>
+          <MyCol xs={12} lg={8} inverted>
             <LinkArea>
               <Link href="#!">Credits</Link>
               <Link href="#!">Privary</Link>
