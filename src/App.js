@@ -32,7 +32,6 @@ function App() {
           <CartDisplay />
         </Route>
       </Switch>
-      {/* <Cart /> */}
     </BrowserRouter>
   );
 }
