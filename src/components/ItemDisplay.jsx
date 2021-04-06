@@ -77,6 +77,14 @@ const Type = styled.div`
 
 const AddToCartBtn = styled.div`
   pointer-events: initial;
+  background-color: #c4c4c4;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 45px;
 `;
 
 export default function ItemDisplay({ item }) {
