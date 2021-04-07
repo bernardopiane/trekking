@@ -18,13 +18,15 @@ export function Cart() {
     </div>
   ));
 
-  const cartList = cart.map((item) => (
-    <div key={item.name}>
-      <div>{item.name}</div>
-      <div>{item.value}</div>
-      <button onClick={() => dispatch(removeItem(item))}>Remove</button>
-    </div>
-  ));
+  const cartList = cart.map((item) => {
+    return (
+      <div key={item.name}>
+        <div>{item.name}</div>
+        <div>{item.value}</div>
+        <button onClick={() => dispatch(removeItem(item))}>Remove</button>
+      </div>
+    );
+  });
 
   return (
     <div>

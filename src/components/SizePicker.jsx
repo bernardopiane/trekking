@@ -5,10 +5,10 @@ import styles from "./SizePicker.module.css";
 
 const options = ["Small", "Medium", "Large"];
 
-export default function SizePicker() {
+export default function SizePicker({ sizes }) {
   return (
     <Dropdown
-      options={options}
+      options={[sizes]}
       onChange={() => {}}
       className={styles.dropdown}
       controlClassName={styles.dropdown}

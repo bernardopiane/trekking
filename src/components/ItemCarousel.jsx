@@ -46,7 +46,7 @@ const Controls = styled.div`
 
 export default function ItemCarousel({ items, title }) {
   const [navSlider, setNavSlider] = useState();
-
+  
   const settings = {
     infinite: true,
     speed: 500,

@@ -24,15 +24,18 @@ export default function FilteredItems() {
 
   const childrenShow = useSelector(childrenToggle);
 
-  const sampleItems = items.slice(0, 15).map((item) => {
+  const sampleItems = items.slice(0, 15).map((data) => {
+    const item = JSON.parse(data);
     return <ItemDisplay key={item.name} item={item} />;
   });
 
-  const sampleItemsWo = items.slice(16, 30).map((item) => {
+  const sampleItemsWo = items.slice(16, 30).map((data) => {
+    const item = JSON.parse(data);
     return <ItemDisplay key={item.name} item={item} />;
   });
 
-  const sampleItemsCh = items.slice(31, 45).map((item) => {
+  const sampleItemsCh = items.slice(31, 45).map((data) => {
+    const item = JSON.parse(data);
     return <ItemDisplay key={item.name} item={item} />;
   });
 

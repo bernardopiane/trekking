@@ -90,17 +90,23 @@ const AddToCartBtn = styled.div`
 export default function ItemDisplay({ item }) {
   const dispatch = useDispatch(additem);
 
+  console.log(item);
+
   return (
     <Wrapper>
       <AddToCartArea>
-        <AddToCartBtn onClick={() => dispatch(additem(item))}>+</AddToCartBtn>
+        <AddToCartBtn onClick={() => dispatch(additem(JSON.stringify(item)))}>
+          +
+        </AddToCartBtn>
       </AddToCartArea>
       <Row>
-        <SizePicker />
-        <ColorPicker colors={["red", "green", "blue"]} />
+        <SizePicker sizes={item.size} />
+        {/* <ColorPicker colors={["red", "green", "blue"]} /> */}
+        <ColorPicker colors={[item.colors]} />
       </Row>
       <Image src={item.image} />
       <Row>
+        {/* <Type>Type</Type> */}
         <Type>Type</Type>
         <Value>{item.value}</Value>
       </Row>
