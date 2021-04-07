@@ -90,10 +90,15 @@ const AddToCartBtn = styled.div`
 
 export default function ItemDisplay({ item }) {
   const dispatch = useDispatch(additem);
-  const [size, setSize] = useState(item.colors[0]);
+  const [size, setSize] = useState(item.size[0]);
+  const [color, setColor] = useState(item.colors[0]);
 
   function handleSize(value) {
     setSize(value);
+  }
+
+  function handleColor(value) {
+    setColor(value);
   }
 
   console.log(item);
@@ -108,12 +113,12 @@ export default function ItemDisplay({ item }) {
       <Row>
         <SizePicker sizes={item.size} handleSize={handleSize} />
         {/* <ColorPicker colors={["red", "green", "blue"]} /> */}
-        <ColorPicker colors={[item.colors]} />
+        <ColorPicker colors={[item.colors]} handleColor={handleColor} />
       </Row>
       <Image src={item.image} />
       <Row>
         {/* <Type>Type</Type> */}
-        <Type onClick={() => console.log(size)}>Type</Type>
+        <Type onClick={() => console.log(size, color)}>Type</Type>
         <Value>{item.value}</Value>
       </Row>
     </Wrapper>

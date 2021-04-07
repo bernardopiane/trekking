@@ -14,8 +14,14 @@ const ColorBtn = styled.div`
   cursor: pointer;
 `;
 
-export default function ColorPicker({ colors }) {
-  const buildBtn = colors.map((color) => <ColorBtn key={color} color={color} />);
+export default function ColorPicker({ colors, handleColor }) {
+  function setColor(value) {
+    handleColor(value);
+  }
+
+  const buildBtn = colors.map((color) => (
+    <ColorBtn key={color} color={color} onClick={setColor(color)} />
+  ));
 
   return <Wrapper>{buildBtn}</Wrapper>;
 }
