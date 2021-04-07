@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { additem } from "../features/cart/cartSlice";
 import ColorPicker from "./ColorPicker";
 import SizePicker from "./SizePicker";
+import { BsPlusCircle } from "react-icons/bs";
 
 const AddToCartArea = styled.div`
   position: absolute;
@@ -77,7 +78,7 @@ const Type = styled.div`
 
 const AddToCartBtn = styled.div`
   pointer-events: initial;
-  background-color: #c4c4c4;
+  /* background-color: #c4c4c4; */
   border-radius: 100%;
   text-align: center;
   display: flex;
@@ -89,6 +90,11 @@ const AddToCartBtn = styled.div`
 
 export default function ItemDisplay({ item }) {
   const dispatch = useDispatch(additem);
+  const [size, setSize] = useState(item.colors[0]);
+
+  function handleSize(value) {
+    setSize(value);
+  }
 
   console.log(item);
 
@@ -96,18 +102,18 @@ export default function ItemDisplay({ item }) {
     <Wrapper>
       <AddToCartArea>
         <AddToCartBtn onClick={() => dispatch(additem(JSON.stringify(item)))}>
-          +
+          <BsPlusCircle size={32} />
         </AddToCartBtn>
       </AddToCartArea>
       <Row>
-        <SizePicker sizes={item.size} />
+        <SizePicker sizes={item.size} handleSize={handleSize} />
         {/* <ColorPicker colors={["red", "green", "blue"]} /> */}
         <ColorPicker colors={[item.colors]} />
       </Row>
       <Image src={item.image} />
       <Row>
         {/* <Type>Type</Type> */}
-        <Type>Type</Type>
+        <Type onClick={() => console.log(size)}>Type</Type>
         <Value>{item.value}</Value>
       </Row>
     </Wrapper>

@@ -6,8 +6,8 @@ class Item {
     this.image = image;
     this.value = value;
     this.description = description;
-    this.size = size;
-    this.colors = colors;
+    this.size = [size];
+    this.colors = [colors];
   }
 }
 
@@ -8982,7 +8982,16 @@ const arr = [
 ];
 
 const ItemsArray = arr.map((item) =>
-  JSON.stringify(new Item(item.name, item.image, item.value, item.description, item.size, item.colors))
+  JSON.stringify(
+    new Item(
+      item.name,
+      item.image,
+      item.value,
+      item.description,
+      item.size,
+      item.colors
+    )
+  )
 );
 
 export const cartSlice = createSlice({
