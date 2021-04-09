@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   childrenToggle,
   menToggle,
+  setFilter,
   toggleFilter,
   womenToggle,
 } from "../features/cart/cartSlice";
@@ -45,9 +46,9 @@ const Button = styled.button`
 
 export default function Filter() {
   const toggleAll = () => {
-    dispatch(toggleFilter("men"));
-    dispatch(toggleFilter("women"));
-    dispatch(toggleFilter("children"));
+    dispatch(setFilter("men"));
+    dispatch(setFilter("women"));
+    dispatch(setFilter("children"));
   };
 
   const dispatch = useDispatch();

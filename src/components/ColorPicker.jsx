@@ -20,7 +20,13 @@ export default function ColorPicker({ colors, handleColor }) {
   }
 
   const buildBtn = colors.map((color) => (
-    <ColorBtn key={color} color={color} onClick={setColor(color)} />
+    <ColorBtn
+      key={color}
+      color={color}
+      onClick={(color) => {
+        setColor(color);
+      }}
+    />
   ));
 
   return <Wrapper>{buildBtn}</Wrapper>;

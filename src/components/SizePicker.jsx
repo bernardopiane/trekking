@@ -3,7 +3,7 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import styles from "./SizePicker.module.css";
 
-const options = ["Small", "Medium", "Large"];
+// const options = ["Small", "Medium", "Large"];
 
 export default function SizePicker(props) {
   function handleSize(value) {

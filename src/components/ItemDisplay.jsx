@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { additem } from "../features/cart/cartSlice";
 import ColorPicker from "./ColorPicker";
 import SizePicker from "./SizePicker";
-import { BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle, BsCheckCircle } from "react-icons/bs";
 
 const AddToCartArea = styled.div`
   position: absolute;
@@ -92,6 +92,7 @@ export default function ItemDisplay({ item }) {
   const dispatch = useDispatch(additem);
   const [size, setSize] = useState(item.size[0]);
   const [color, setColor] = useState(item.colors[0]);
+  const [bought, setBought] = useState(false);
 
   function handleSize(value) {
     setSize(value);
@@ -101,15 +102,25 @@ export default function ItemDisplay({ item }) {
     setColor(value);
   }
 
-  console.log(item);
-
   return (
     <Wrapper>
       <AddToCartArea>
-        <AddToCartBtn onClick={() => dispatch(additem(JSON.stringify(item)))}>
-          <BsPlusCircle size={32} />
-        </AddToCartBtn>
+        {bought ? (
+          <AddToCartBtn>
+            <BsCheckCircle size={48} color="green" />
+          </AddToCartBtn>
+        ) : (
+          <AddToCartBtn
+            onClick={() => {
+              dispatch(additem(JSON.stringify(item)));
+              setBought(!bought);
+            }}
+          >
+            <BsPlusCircle size={32} />
+          </AddToCartBtn>
+        )}
       </AddToCartArea>
+
       <Row>
         <SizePicker sizes={item.size} handleSize={handleSize} />
         {/* <ColorPicker colors={["red", "green", "blue"]} /> */}
