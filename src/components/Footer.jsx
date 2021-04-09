@@ -26,17 +26,26 @@ const LinkArea = styled.div`
 
 const Link = styled.a`
   color: white;
+  /* margin: 1em; */
   :hover {
     color: #b4b4b4;
     text-decoration: none;
   }
-  &:not(:last-child) {
+  /* &:not(:last-child) {
     ::after {
       content: "";
       border-left: 1px solid #aa9b77;
-      margin: 1em;
-    }
-  }
+      /* margin: 1em; */
+  /* }
+  } */
+`;
+
+const Separator = styled.div`
+  display: block;
+  height: 20px;
+  width: 1px;
+  border-left: 1px solid #aa9b77;
+  margin: 0 1em 0 1em;
 `;
 
 export default function Footer() {
@@ -56,8 +65,11 @@ export default function Footer() {
           <MyCol xs={12} lg={8} inverted="true">
             <LinkArea>
               <Link href="#!">Credits</Link>
+              <Separator />
               <Link href="#!">Privary</Link>
+              <Separator />
               <Link href="#!">About</Link>
+              <Separator />
               <Link href="#!">Contact</Link>
             </LinkArea>
             <div>Design by gianluca cosetta</div>
