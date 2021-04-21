@@ -28,7 +28,7 @@ function App() {
         </Route>
 
         <Route path="/cart">
-          <Navbar />
+          <Navbar hasBG={"black"} />
           <CartDisplay />
         </Route>
       </Switch>

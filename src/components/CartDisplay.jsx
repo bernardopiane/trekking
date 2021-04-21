@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { selectCart } from "../features/cart/cartSlice";
@@ -9,10 +11,27 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 4em 0 4em 0;
 `;
 
 const Spaccing = styled.div`
   padding-top: 6em;
+`;
+
+const GridArea = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  align-items: center;
+  /* grid-auto-flow: row; */
+  grid-gap: 2em 1em;
+  /* grid-template-rows: repeat(3, auto); */
+`;
+
+const EmptyArea = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;
 
 export default function CartDisplay() {
@@ -49,18 +68,15 @@ export default function CartDisplay() {
 
   return (
     <Wrapper>
-      <div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div>
-            <div>Cart List</div>
-            {cartList}
-          </div>
-          {/* <div>
-            <div>Item List</div>
-            {itemList}
-          </div> */}
-        </div>
-      </div>
+      <Container>
+          {cartList.length >= 1 ? (
+            <GridArea>{cartList}</GridArea>
+          ) : (
+            <EmptyArea>
+              <AiOutlineShoppingCart size={128} />
+            </EmptyArea>
+          )}
+      </Container>
       <Spaccing>
         <CartBar total={total} />
       </Spaccing>

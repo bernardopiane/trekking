@@ -7,6 +7,7 @@ import CartIcon from "./CartIcon";
 
 const Wrapper = styled.div`
   padding: 3em 10em 3em 10em;
+  background-color: ${(props) => props.bgColor || "transparent"};
   flex-grow: 1;
 `;
 
@@ -21,9 +22,9 @@ const LinkSection = styled.div`
   }
 `;
 
-export default function Navbar() {
+export default function Navbar({ hasBG }) {
   return (
-    <Wrapper>
+    <Wrapper bgColor={hasBG}>
       <Container
         fluid
         className="d-flex justify-content-between align-content-center"
