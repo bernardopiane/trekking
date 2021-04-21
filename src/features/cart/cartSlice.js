@@ -72,6 +72,14 @@ export const cartSlice = createSlice({
         state.childrenFilter = true;
       }
     },
+    
+    changeQnt: (state, action) => {
+      const item = JSON.parse(state.cart[action.payload[0]]);
+      // const item = JSON.parse(action.payload[0]);
+      item.qnt = action.payload[1];
+
+      state.cart[action.payload[0]] = JSON.stringify(item);
+    },
   },
 });
 
@@ -81,6 +89,7 @@ export const {
   toggleFilter,
   removeAt,
   setFilter,
+  changeQnt,
 } = cartSlice.actions;
 
 // The function below is called a selector and allows us to select a value from

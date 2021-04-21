@@ -112,7 +112,8 @@ export default function ItemDisplay({ item }) {
         ) : (
           <AddToCartBtn
             onClick={() => {
-              dispatch(additem(JSON.stringify(item)));
+              const prepedItem = {item: item, size: size, color: color, qnt: 1};
+              dispatch(additem(JSON.stringify(prepedItem)));
               setBought(!bought);
             }}
           >

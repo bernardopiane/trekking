@@ -1,9 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { selectCart } from "../features/cart/cartSlice";
 import logo from "../images/Livello 8.png";
 import CartIcon from "./CartIcon";
 
@@ -24,10 +22,6 @@ const LinkSection = styled.div`
 `;
 
 export default function Navbar() {
-  const cart = useSelector(selectCart);
-
-  console.log(cart);
-
   return (
     <Wrapper>
       <Container
