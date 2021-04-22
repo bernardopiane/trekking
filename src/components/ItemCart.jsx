@@ -47,10 +47,14 @@ const Image = styled.img`
 
 const InformationArea = styled.div`
   margin: 1em 1em;
-  flex-grow: 1;
+  flex-grow: 4;
 `;
 
 const PriceArea = styled.div`
+  align-self: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  flex-grow: 1;
   padding: 0.5em 0;
 `;
 
@@ -65,11 +69,22 @@ const SizeArea = styled.div`
 `;
 
 const QntArea = styled.div`
+  align-self: center;
   margin: 1em 1em;
+  flex-grow: 1;
+`;
+
+const IndividualPrice = styled.div`
+  font-size: 16px;
+  font-weight: lighter;
+  position: absolute;
 `;
 
 export default function ItemCart({ item: data, index }, key) {
   const dispatch = useDispatch();
+  var totalPrice = Number(
+    data.item.value.replace(/[^0-9.-]+/g, "") * data.qnt
+  ).toFixed(2);
   return (
     <Wrapper>
       <Card>
@@ -78,7 +93,6 @@ export default function ItemCart({ item: data, index }, key) {
         </div>
         <InformationArea>
           <Title>{data.item.name}</Title>
-          <PriceArea>Preço: {data.item.value}</PriceArea>
           <ColorArea>
             Cor : {data.color}
             <ColorPicker colors={[data.color]} handleColor={() => {}} />
@@ -102,6 +116,15 @@ export default function ItemCart({ item: data, index }, key) {
             <AiOutlineCloseCircle size={36} />
           </CloseButton>
         </QntArea>
+        <PriceArea>
+          Preço: {totalPrice}
+          <br />
+          {data.qnt > 1 && (
+            <IndividualPrice>
+              Preço individual : {data.item.value}
+            </IndividualPrice>
+          )}
+        </PriceArea>
       </Card>
     </Wrapper>
   );

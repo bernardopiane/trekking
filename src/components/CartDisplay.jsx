@@ -20,11 +20,9 @@ const Spaccing = styled.div`
 
 const GridArea = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); */
   align-items: center;
-  /* grid-auto-flow: row; */
   grid-gap: 2em 1em;
-  /* grid-template-rows: repeat(3, auto); */
 `;
 
 const EmptyArea = styled.div`
@@ -69,13 +67,13 @@ export default function CartDisplay() {
   return (
     <Wrapper>
       <Container>
-          {cartList.length >= 1 ? (
-            <GridArea>{cartList}</GridArea>
-          ) : (
-            <EmptyArea>
-              <AiOutlineShoppingCart size={128} />
-            </EmptyArea>
-          )}
+        {cartList.length >= 1 ? (
+          <GridArea>{cartList}</GridArea>
+        ) : (
+          <EmptyArea>
+            <AiOutlineShoppingCart size={128} />
+          </EmptyArea>
+        )}
       </Container>
       <Spaccing>
         <CartBar total={total} />
