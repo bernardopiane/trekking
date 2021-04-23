@@ -29,6 +29,9 @@ const Card = styled.div`
   padding: 1em 2em;
   width: 100%;
   display: flex;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
   /* align-items: center; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 `;
@@ -42,6 +45,10 @@ const Image = styled.img`
   width: 10em;
   padding: 1em 0 1em 0;
   object-fit: cover;
+  @media only screen and (max-width: 600px) {
+    height: 100%;
+    width: 100%;
+  }
   transition: filter 225ms ease-in-out;
 `;
 

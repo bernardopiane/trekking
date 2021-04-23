@@ -10,10 +10,6 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import TwitterBar from "./components/TwitterBar";
 
-//TODO serialize items
-//TODO continuar cart
-//TODO selecionar cor/tamanhos
-
 function App() {
   return (
     <BrowserRouter>
@@ -28,7 +24,7 @@ function App() {
         </Route>
 
         <Route path="/cart">
-          <Navbar hasBG={"black"} />
+          <Navbar hasBG="black" />
           <CartDisplay />
         </Route>
       </Switch>

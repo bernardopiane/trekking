@@ -6,9 +6,13 @@ import logo from "../images/Livello 8.png";
 import CartIcon from "./CartIcon";
 
 const Wrapper = styled.div`
-  padding: 3em 10em 3em 10em;
+  padding: 2em 1em 2em 1em;
   background-color: ${(props) => props.bgColor || "transparent"};
   flex-grow: 1;
+
+  @media only screen and (min-width: 800px) {
+    padding: 3em 10em 3em 10em;
+  }
 `;
 
 const LinkSection = styled.div`

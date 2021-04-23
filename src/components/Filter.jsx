@@ -19,6 +19,8 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
   text-transform: uppercase;
 `;
 
