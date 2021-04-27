@@ -5,6 +5,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import styled from "styled-components";
 import ColorPicker from "./ColorPicker";
 
+const queryBreakPoint = "700px";
+
 const Wrapper = styled.div`
   display: flex;
   position: relative;
@@ -29,7 +31,7 @@ const Card = styled.div`
   padding: 1em 2em;
   width: 100%;
   display: flex;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: ${queryBreakPoint}) {
     flex-direction: column;
   }
   /* align-items: center; */
@@ -45,7 +47,7 @@ const Image = styled.img`
   width: 10em;
   padding: 1em 0 1em 0;
   object-fit: cover;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: ${queryBreakPoint}) {
     height: 100%;
     width: 100%;
   }

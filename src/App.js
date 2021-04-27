@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AboutUs from "./components/AboutUs";
+import AllProducts from "./components/AllProducts";
 import CartDisplay from "./components/CartDisplay";
 import Filter from "./components/Filter";
 import FilteredItems from "./components/FilteredItems";
@@ -26,6 +27,11 @@ function App() {
         <Route path="/cart">
           <Navbar hasBG="black" />
           <CartDisplay />
+        </Route>
+
+        <Route path="/products">
+          <Navbar hasBG="black" />
+          <AllProducts />
         </Route>
       </Switch>
     </BrowserRouter>

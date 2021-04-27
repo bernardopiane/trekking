@@ -38,7 +38,7 @@ export default function Navbar({ hasBG }) {
         </>
         <LinkSection>
           <Link to="/">Home</Link>
-          <a href="#!">Products</a>
+          <Link to="/products">Products</Link>
           <CartIcon />
         </LinkSection>
       </Container>

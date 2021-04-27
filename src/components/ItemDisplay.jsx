@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { additem } from "../features/cart/cartSlice";
+import { additem, selectCart } from "../features/cart/cartSlice";
 import ColorPicker from "./ColorPicker";
 import SizePicker from "./SizePicker";
 import { BsPlusCircle, BsCheckCircle } from "react-icons/bs";
@@ -90,6 +90,7 @@ const AddToCartBtn = styled.div`
 
 export default function ItemDisplay({ item }) {
   const dispatch = useDispatch(additem);
+  const cart = useSelector(selectCart);
   const [size, setSize] = useState(item.size[0]);
   const [color, setColor] = useState(item.colors[0]);
   const [bought, setBought] = useState(false);
@@ -102,17 +103,23 @@ export default function ItemDisplay({ item }) {
     setColor(value);
   }
 
+  const prepedItem = {
+    item: item,
+    size: size,
+    color: color,
+    qnt: 1,
+  };
+
   return (
     <Wrapper>
       <AddToCartArea>
-        {bought ? (
+        {cart.includes(JSON.stringify(prepedItem)) ? (
           <AddToCartBtn>
             <BsCheckCircle size={48} color="green" />
           </AddToCartBtn>
         ) : (
           <AddToCartBtn
             onClick={() => {
-              const prepedItem = {item: item, size: size, color: color, qnt: 1};
               dispatch(additem(JSON.stringify(prepedItem)));
               setBought(!bought);
             }}
