@@ -49,7 +49,7 @@ const Separator = styled.div`
 `;
 
 export default function Footer() {
-  return (
+    return (
     <Wrapper>
       <Container>
         <MyRow>

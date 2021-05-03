@@ -30,10 +30,10 @@ export const cartSlice = createSlice({
     value: 0,
     items: ItemsArray,
     cart: [],
-    //Fazer em array de bools
-    menFilter: true,
-    womenFilter: true,
-    childrenFilter: true,
+    //Fazer em array de bools ou remover e fazer direto por localstorage
+    menFilter: localStorage.getItem("menFilter"),
+    womenFilter: localStorage.getItem("womenFilter"),
+    childrenFilter: localStorage.getItem("childrenFilter"),
   },
   reducers: {
     additem: (state, action) => {
@@ -51,12 +51,15 @@ export const cartSlice = createSlice({
 
     toggleFilter: (state, action) => {
       if (action.payload === "men") {
+        localStorage.setItem("menFilter", !state.menFilter);
         state.menFilter = !state.menFilter;
       }
       if (action.payload === "women") {
+        localStorage.setItem("womenFilter", !state.womenFilter);
         state.womenFilter = !state.womenFilter;
       }
       if (action.payload === "children") {
+        localStorage.setItem("childrenFilter", !state.childrenFilter);
         state.childrenFilter = !state.childrenFilter;
       }
     },
@@ -72,7 +75,7 @@ export const cartSlice = createSlice({
         state.childrenFilter = true;
       }
     },
-    
+
     changeQnt: (state, action) => {
       const item = JSON.parse(state.cart[action.payload[0]]);
       // const item = JSON.parse(action.payload[0]);

@@ -5,6 +5,8 @@ import { additem, selectCart } from "../features/cart/cartSlice";
 import ColorPicker from "./ColorPicker";
 import SizePicker from "./SizePicker";
 import { BsPlusCircle, BsCheckCircle } from "react-icons/bs";
+import Lottie from "react-lottie";
+import animationData from "../animation/56807-favorite.json";
 
 const AddToCartArea = styled.div`
   position: absolute;
@@ -88,6 +90,17 @@ const AddToCartBtn = styled.div`
   width: 45px;
 `;
 
+//TODO acertar cores da fundo, local do icone
+
+const Favorite = styled.div`
+  position: absolute;
+  top: 50px;
+  right: -5px;
+  background-color: rgba(0, 0, 0, 0.137);
+  border-radius: 100%;
+  z-index: 100;
+`;
+
 export default function ItemDisplay({ item }) {
   const dispatch = useDispatch(additem);
   const cart = useSelector(selectCart);
@@ -109,6 +122,17 @@ export default function ItemDisplay({ item }) {
     color: color,
     qnt: 1,
   };
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: false,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const [Favorited, setFavorited] = useState(true);
 
   return (
     <Wrapper>
@@ -134,6 +158,14 @@ export default function ItemDisplay({ item }) {
         {/* <ColorPicker colors={["red", "green", "blue"]} /> */}
         <ColorPicker colors={[item.colors]} handleColor={handleColor} />
       </Row>
+      <Favorite onClick={() => setFavorited(!Favorited)}>
+        <Lottie
+          height={50}
+          width={50}
+          options={defaultOptions}
+          isStopped={Favorited}
+        />
+      </Favorite>
       <Image src={item.image} />
       <Row>
         {/* <Type>Type</Type> */}
