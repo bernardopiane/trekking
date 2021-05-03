@@ -12,6 +12,8 @@ const Wrapper = styled(Container)`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `;
 
+//TODO paginação
+
 export default function AllProducts() {
   const items = useSelector(selectItems);
 

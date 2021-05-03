@@ -93,12 +93,12 @@ const AddToCartBtn = styled.div`
 //TODO acertar cores da fundo, local do icone
 
 const Favorite = styled.div`
-  position: absolute;
-  top: 50px;
-  right: -5px;
+  /* position: absolute; */
+  /* top: 50px; */
+  /* right: -5px; */
   background-color: rgba(0, 0, 0, 0.137);
-  border-radius: 100%;
-  z-index: 100;
+  /* border-radius: 100%; */
+  /* z-index: 100; */
 `;
 
 export default function ItemDisplay({ item }) {
@@ -158,18 +158,19 @@ export default function ItemDisplay({ item }) {
         {/* <ColorPicker colors={["red", "green", "blue"]} /> */}
         <ColorPicker colors={[item.colors]} handleColor={handleColor} />
       </Row>
-      <Favorite onClick={() => setFavorited(!Favorited)}>
-        <Lottie
-          height={50}
-          width={50}
-          options={defaultOptions}
-          isStopped={Favorited}
-        />
-      </Favorite>
       <Image src={item.image} />
       <Row>
         {/* <Type>Type</Type> */}
         <Type onClick={() => console.log(size, color)}>Type</Type>
+        <Favorite onClick={() => setFavorited(!Favorited)}>
+          <Lottie
+            height={50}
+            width={50}
+            options={defaultOptions}
+            isStopped={Favorited}
+          />
+        </Favorite>
+
         <Value>{item.value}</Value>
       </Row>
     </Wrapper>

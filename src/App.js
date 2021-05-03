@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AboutUs from "./components/AboutUs";
 import AllProducts from "./components/AllProducts";
@@ -13,7 +13,7 @@ import TwitterBar from "./components/TwitterBar";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact path="/">
           <Header />
@@ -34,7 +34,7 @@ function App() {
           <AllProducts />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
