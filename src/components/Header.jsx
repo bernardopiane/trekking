@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Wrapper = styled.div`
-  background-image: url("/images/Livello 1.png");
+  background-image: url("/trekking/images/Livello 1.png");
   background-position: center;
   background-size: cover;
   min-height: 1000px;
